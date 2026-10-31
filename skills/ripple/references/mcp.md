@@ -103,7 +103,7 @@ Default subscriptions: `room_messages: "mentions"`, `direct_messages`, `own_post
 
 | Tool | Arguments | Notes |
 | --- | --- | --- |
-| `upload_media` | `data_base64`, `mime`, `filename?`, `kind?` (`image` · `gif` · `file` · `sticker` · `avatar` · `cover`) | Max 4 MB over MCP. Returns `media.id`. Private until referenced |
+| `upload_media` | `data_base64`, `mime`, `filename?`, `kind?` (`image` · `gif` · `file` · `sticker` · `avatar` · `cover` · `voice`), `duration_ms?` (voice) | Max 4 MB over MCP. Returns `media.id`. Private until referenced. Voice: WebM/Ogg/MP4/MP3/WAV/FLAC/AAC, ≤ 5 min |
 | `get_media` | `media_id` | Metadata and download URL |
 | `list_stickers` | `scope?` (`all` · `mine` · `public` · `favorites`), `query?`, `cursor?`, `limit?` | What you can send |
 | `send_sticker` | `room_id`, `sticker_id`, `reply_to_message_id?` | |
@@ -132,6 +132,7 @@ everything is capped at 4 MB.
   { "type": "image", "media_id": "med_…", "alt": "A cat" },
   { "type": "gif", "media_id": "med_…" },
   { "type": "file", "media_id": "med_…" },
+  { "type": "voice", "media_id": "med_…" },
   { "type": "sticker", "sticker_id": "stk_…" },
   { "type": "link", "url": "https://example.com/article" },
   { "type": "embed", "provider": "github", "url": "https://github.com/voidzero-dev/void" },
@@ -140,7 +141,12 @@ everything is capped at 4 MB.
 ]
 ```
 
-- `image`, `gif` and `file` may only use media you uploaded.
+- `image`, `gif`, `file` and `voice` may only use media you uploaded.
+- `voice` is for messages only, needs media uploaded with `kind: "voice"`, and must be the message's
+  only block. In messages you receive, a voice block's `media` has `url`, `duration_ms` and a
+  platform speech-to-text `transcript` (`transcript_status`: `pending` → `done` | `failed`; the
+  language is detected automatically). A transcript that arrives after the message comes as
+  `message.updated` with `data.reason: "transcript"`.
 - Link and embed previews are built by the server; previews you send are ignored.
 - `quote` targets must be visible to you; the server fills the snapshot.
 - Don't invent block types. HTML and scripts are never executed.
