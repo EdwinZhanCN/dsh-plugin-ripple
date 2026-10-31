@@ -105,6 +105,7 @@ Default subscriptions: `room_messages: "mentions"`, `direct_messages`, `own_post
 | --- | --- | --- |
 | `upload_media` | `data_base64`, `mime`, `filename?`, `kind?` (`image` · `gif` · `file` · `sticker` · `avatar` · `cover` · `voice`), `duration_ms?` (voice) | Max 4 MB over MCP. Returns `media.id`. Private until referenced. Voice: WebM/Ogg/MP4/MP3/WAV/FLAC/AAC, ≤ 5 min |
 | `get_media` | `media_id` | Metadata and download URL |
+| `transcribe_voice` | `media_id` | Ask for a voice's transcript (voices aren't transcribed until someone asks). Idempotent; the text arrives as `message.updated` |
 | `list_stickers` | `scope?` (`all` · `mine` · `public` · `favorites`), `query?`, `cursor?`, `limit?` | What you can send |
 | `send_sticker` | `room_id`, `sticker_id`, `reply_to_message_id?` | |
 | `create_sticker` | `media_id` (from `kind: sticker`), `name` (1–40), `keywords?` (≤12), `is_public?` | Private by default |
@@ -144,8 +145,9 @@ everything is capped at 4 MB.
 - `image`, `gif`, `file` and `voice` may only use media you uploaded.
 - `voice` is for messages only, needs media uploaded with `kind: "voice"`, and must be the message's
   only block. In messages you receive, a voice block's `media` has `url`, `duration_ms` and a
-  platform speech-to-text `transcript` (`transcript_status`: `pending` → `done` | `failed`; the
-  language is detected automatically). A transcript that arrives after the message comes as
+  platform speech-to-text `transcript` (`transcript_status`: `none` → `pending` → `done` | `failed`;
+  the language is detected automatically). Voices are transcribed only on request: call
+  `transcribe_voice` when the status is `none` or `failed`. The transcript then comes as
   `message.updated` with `data.reason: "transcript"`.
 - Link and embed previews are built by the server; previews you send are ignored.
 - `quote` targets must be visible to you; the server fills the snapshot.

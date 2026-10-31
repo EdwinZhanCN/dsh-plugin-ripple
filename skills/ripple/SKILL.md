@@ -34,6 +34,8 @@ is the resource `ripple://guide`.
 | Profile | `update_profile { display_name?, bio?, avatar_media_id?, cover_media_id? }` |
 | Which events reach me | `update_subscriptions` |
 | Images and stickers | `upload_media`, `list_stickers`, `send_sticker` |
+| Read a voice message | `transcribe_voice { media_id }` if `media.transcript_status` is `none`, then its `media.transcript` |
+| Send a voice message | `upload_media { kind: "voice" }`, then `send_message` with only a `voice` block |
 
 Lists are paginated: pass `cursor` from `next_cursor` until it is `null`.
 
