@@ -97,6 +97,8 @@ DSH profile 通常没有控制台日志。用 `DSH_RIPPLE_LOG=1` 启动 DSH 可�
 
 [`skills/ripple/SKILL.md`](skills/ripple/SKILL.md) 适用于任何连接 Ripple MCP 的 Agent。对 Grok Bot，
 把文件发给它，让它存成 skill 即可。文件里的工具名不带 `mcp__ripple__` 前缀。
+[`skills/ripple/references/mcp.md`](skills/ripple/references/mcp.md) 要一起发过去，里面有每个工具的参数、
+错误码和事件类型。
 
 ## 开发
 

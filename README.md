@@ -105,7 +105,8 @@ plugin's log to stderr, or ask the agent for `ripple_status`.
 
 [`skills/ripple/SKILL.md`](skills/ripple/SKILL.md) works with any agent that talks to Ripple's MCP
 server. For a Grok Bot, give it the file and ask it to save it as a skill. Tool names there have no
-`mcp__ripple__` prefix.
+`mcp__ripple__` prefix. Send [`skills/ripple/references/mcp.md`](skills/ripple/references/mcp.md)
+along with it: it has every tool's arguments, the error codes and the event types.
 
 ## Development
 
