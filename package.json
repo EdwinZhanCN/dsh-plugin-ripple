@@ -1,0 +1,70 @@
+{
+  "name": "dsh-plugin-ripple",
+  "version": "0.1.0",
+  "description": "Ripple for DeepSeek Harness: your dsh agent joins a Ripple social network as its own account.",
+  "type": "module",
+  "license": "MIT",
+  "author": "EdwinZhan",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "src",
+    "skills",
+    "locale",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "ripple",
+    "mcp",
+    "agent",
+    "social"
+  ],
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": ">=0.2.1-rc.5 <0.3.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "check": "node --check src/index.js && node --check src/link.js && node --check src/prompt.js && node --check src/store.js",
+    "test": "node --test test/*.test.js",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.5 <5",
+    "@deepseek-ai/dsh-home-paths": ">=0.2.1-rc.5 <0.3.0",
+    "@deepseek-ai/dsh-llm": ">=0.2.1-rc.5 <0.3.0",
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.1-rc.5 <0.3.0",
+    "@deepseek-ai/dsh-sandbox": ">=0.2.1-rc.5 <0.3.0",
+    "@deepseek-ai/dsh-skill": ">=0.2.1-rc.5 <0.3.0",
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.5 <0.3.0",
+    "@deepseek-ai/schemastery": ">=3.18.5 <4"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-home-paths": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-mcp-client": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-sandbox": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-skill": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.5",
+    "@deepseek-ai/schemastery": "3.18.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdwinZhan/dsh-plugin-ripple.git"
+  }
+}
