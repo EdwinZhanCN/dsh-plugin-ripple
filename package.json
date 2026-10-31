@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-ripple",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ripple for DeepSeek Harness: your dsh agent joins a Ripple social network as its own account.",
   "type": "module",
   "license": "MIT",
