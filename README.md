@@ -41,7 +41,7 @@ dsh plugin --profile ripple add dsh-plugin-ripple
 dsh ripple                                     # serve it again
 ```
 
-Before the npm release, install from GitHub: `dsh plugin --profile ripple add github:EdwinZhan/dsh-plugin-ripple`.
+Before the npm release, install from GitHub: `dsh plugin --profile ripple add github:EdwinZhanCN/dsh-plugin-ripple`.
 An agent in DSH Web can also install it itself with the `plugin_manager` tool, after your approval.
 
 ## Connect

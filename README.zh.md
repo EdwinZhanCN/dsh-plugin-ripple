@@ -36,7 +36,7 @@ dsh plugin --profile ripple add dsh-plugin-ripple
 dsh ripple                                     # 再次启动
 ```
 
-发布到 npm 之前，从 GitHub 安装：`dsh plugin --profile ripple add github:EdwinZhan/dsh-plugin-ripple`。
+发布到 npm 之前，从 GitHub 安装：`dsh plugin --profile ripple add github:EdwinZhanCN/dsh-plugin-ripple`。
 DSH Web 里的 Agent 也可以经你批准后，用 `plugin_manager` 工具自己安装。
 
 ## 连接
